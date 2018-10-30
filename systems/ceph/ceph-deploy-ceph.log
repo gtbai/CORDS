@@ -1,0 +1,88 @@
+[2018-10-30 02:39:44,740][ceph_deploy.conf][DEBUG ] found configuration file at: /home/cephor/.cephdeploy.conf
+[2018-10-30 02:39:44,741][ceph_deploy.cli][INFO  ] Invoked (1.5.39): /usr/bin/ceph-deploy purgedata p2-instance-group-1-139b
+[2018-10-30 02:39:44,741][ceph_deploy.cli][INFO  ] ceph-deploy options:
+[2018-10-30 02:39:44,741][ceph_deploy.cli][INFO  ]  username                      : None
+[2018-10-30 02:39:44,741][ceph_deploy.cli][INFO  ]  verbose                       : False
+[2018-10-30 02:39:44,742][ceph_deploy.cli][INFO  ]  overwrite_conf                : False
+[2018-10-30 02:39:44,742][ceph_deploy.cli][INFO  ]  quiet                         : False
+[2018-10-30 02:39:44,742][ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7f315b8ba5a8>
+[2018-10-30 02:39:44,742][ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[2018-10-30 02:39:44,742][ceph_deploy.cli][INFO  ]  host                          : ['p2-instance-group-1-139b']
+[2018-10-30 02:39:44,742][ceph_deploy.cli][INFO  ]  func                          : <function purgedata at 0x7f315c1ca938>
+[2018-10-30 02:39:44,743][ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[2018-10-30 02:39:44,743][ceph_deploy.cli][INFO  ]  default_release               : False
+[2018-10-30 02:39:44,743][ceph_deploy.install][DEBUG ] Purging data from cluster ceph hosts p2-instance-group-1-139b
+[2018-10-30 02:39:44,776][p2-instance-group-1-139b][DEBUG ] connection detected need for sudo
+[2018-10-30 02:39:44,799][p2-instance-group-1-139b][DEBUG ] connected to host: p2-instance-group-1-139b 
+[2018-10-30 02:39:44,800][p2-instance-group-1-139b][DEBUG ] detect platform information from remote host
+[2018-10-30 02:39:44,819][p2-instance-group-1-139b][DEBUG ] detect machine type
+[2018-10-30 02:39:44,823][p2-instance-group-1-139b][DEBUG ] find the location of an executable
+[2018-10-30 02:39:44,825][p2-instance-group-1-139b][INFO  ] Running command: sudo /sbin/initctl version
+[2018-10-30 02:39:44,838][p2-instance-group-1-139b][DEBUG ] find the location of an executable
+[2018-10-30 02:39:44,840][ceph_deploy.install][ERROR ] Ceph is still installed on: ['p2-instance-group-1-139b']
+[2018-10-30 02:39:44,841][ceph_deploy][ERROR ] RuntimeError: refusing to purge data while Ceph is still installed
+
+[2018-10-30 04:58:09,608][ceph_deploy.conf][DEBUG ] found configuration file at: /home/cephor/.cephdeploy.conf
+[2018-10-30 04:58:09,609][ceph_deploy.cli][INFO  ] Invoked (1.5.39): /usr/bin/ceph-deploy --overwrite-conf config push p2-instance-group-1-139b p2-instance-group-1-6j90 p2-instance-group-1-jvj5
+[2018-10-30 04:58:09,610][ceph_deploy.cli][INFO  ] ceph-deploy options:
+[2018-10-30 04:58:09,610][ceph_deploy.cli][INFO  ]  username                      : None
+[2018-10-30 04:58:09,610][ceph_deploy.cli][INFO  ]  verbose                       : False
+[2018-10-30 04:58:09,610][ceph_deploy.cli][INFO  ]  overwrite_conf                : True
+[2018-10-30 04:58:09,611][ceph_deploy.cli][INFO  ]  subcommand                    : push
+[2018-10-30 04:58:09,611][ceph_deploy.cli][INFO  ]  quiet                         : False
+[2018-10-30 04:58:09,611][ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7fbeedc88710>
+[2018-10-30 04:58:09,611][ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[2018-10-30 04:58:09,612][ceph_deploy.cli][INFO  ]  client                        : ['p2-instance-group-1-139b', 'p2-instance-group-1-6j90', 'p2-instance-group-1-jvj5']
+[2018-10-30 04:58:09,612][ceph_deploy.cli][INFO  ]  func                          : <function config at 0x7fbeee0d5848>
+[2018-10-30 04:58:09,612][ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[2018-10-30 04:58:09,612][ceph_deploy.cli][INFO  ]  default_release               : False
+[2018-10-30 04:58:09,613][ceph_deploy][ERROR ] ConfigError: Cannot load config: [Errno 2] No such file or directory: 'ceph.conf'; has `ceph-deploy new` been run in this directory?
+
+[2018-10-30 05:00:45,180][ceph_deploy.conf][DEBUG ] found configuration file at: /home/cephor/.cephdeploy.conf
+[2018-10-30 05:00:45,181][ceph_deploy.cli][INFO  ] Invoked (1.5.39): /usr/bin/ceph-deploy --overwrite-conf config push p2-instance-group-1-139b p2-instance-group-1-6j90 p2-instance-group-1-jvj5
+[2018-10-30 05:00:45,182][ceph_deploy.cli][INFO  ] ceph-deploy options:
+[2018-10-30 05:00:45,182][ceph_deploy.cli][INFO  ]  username                      : None
+[2018-10-30 05:00:45,182][ceph_deploy.cli][INFO  ]  verbose                       : False
+[2018-10-30 05:00:45,182][ceph_deploy.cli][INFO  ]  overwrite_conf                : True
+[2018-10-30 05:00:45,183][ceph_deploy.cli][INFO  ]  subcommand                    : push
+[2018-10-30 05:00:45,183][ceph_deploy.cli][INFO  ]  quiet                         : False
+[2018-10-30 05:00:45,183][ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7fe0dd462710>
+[2018-10-30 05:00:45,183][ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[2018-10-30 05:00:45,184][ceph_deploy.cli][INFO  ]  client                        : ['p2-instance-group-1-139b', 'p2-instance-group-1-6j90', 'p2-instance-group-1-jvj5']
+[2018-10-30 05:00:45,184][ceph_deploy.cli][INFO  ]  func                          : <function config at 0x7fe0dd8af848>
+[2018-10-30 05:00:45,184][ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[2018-10-30 05:00:45,185][ceph_deploy.cli][INFO  ]  default_release               : False
+[2018-10-30 05:00:45,185][ceph_deploy][ERROR ] ConfigError: Cannot load config: [Errno 2] No such file or directory: 'ceph.conf'; has `ceph-deploy new` been run in this directory?
+
+[2018-10-30 05:02:24,945][ceph_deploy.conf][DEBUG ] found configuration file at: /home/cephor/.cephdeploy.conf
+[2018-10-30 05:02:24,946][ceph_deploy.cli][INFO  ] Invoked (1.5.39): /usr/bin/ceph-deploy --overwrite-conf config push p2-instance-group-1-139b p2-instance-group-1-6j90 p2-instance-group-1-jvj5
+[2018-10-30 05:02:24,947][ceph_deploy.cli][INFO  ] ceph-deploy options:
+[2018-10-30 05:02:24,947][ceph_deploy.cli][INFO  ]  username                      : None
+[2018-10-30 05:02:24,947][ceph_deploy.cli][INFO  ]  verbose                       : False
+[2018-10-30 05:02:24,947][ceph_deploy.cli][INFO  ]  overwrite_conf                : True
+[2018-10-30 05:02:24,947][ceph_deploy.cli][INFO  ]  subcommand                    : push
+[2018-10-30 05:02:24,948][ceph_deploy.cli][INFO  ]  quiet                         : False
+[2018-10-30 05:02:24,948][ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7f7b36efb710>
+[2018-10-30 05:02:24,948][ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[2018-10-30 05:02:24,948][ceph_deploy.cli][INFO  ]  client                        : ['p2-instance-group-1-139b', 'p2-instance-group-1-6j90', 'p2-instance-group-1-jvj5']
+[2018-10-30 05:02:24,949][ceph_deploy.cli][INFO  ]  func                          : <function config at 0x7f7b37348848>
+[2018-10-30 05:02:24,949][ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[2018-10-30 05:02:24,949][ceph_deploy.cli][INFO  ]  default_release               : False
+[2018-10-30 05:02:24,950][ceph_deploy][ERROR ] ConfigError: Cannot load config: [Errno 2] No such file or directory: 'ceph.conf'; has `ceph-deploy new` been run in this directory?
+
+[2018-10-30 05:04:57,565][ceph_deploy.conf][DEBUG ] found configuration file at: /home/cephor/.cephdeploy.conf
+[2018-10-30 05:04:57,566][ceph_deploy.cli][INFO  ] Invoked (1.5.39): /usr/bin/ceph-deploy --overwrite-conf config push p2-instance-group-1-139b p2-instance-group-1-6j90 p2-instance-group-1-jvj5
+[2018-10-30 05:04:57,566][ceph_deploy.cli][INFO  ] ceph-deploy options:
+[2018-10-30 05:04:57,567][ceph_deploy.cli][INFO  ]  username                      : None
+[2018-10-30 05:04:57,567][ceph_deploy.cli][INFO  ]  verbose                       : False
+[2018-10-30 05:04:57,567][ceph_deploy.cli][INFO  ]  overwrite_conf                : True
+[2018-10-30 05:04:57,567][ceph_deploy.cli][INFO  ]  subcommand                    : push
+[2018-10-30 05:04:57,567][ceph_deploy.cli][INFO  ]  quiet                         : False
+[2018-10-30 05:04:57,568][ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7f56edc65710>
+[2018-10-30 05:04:57,568][ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[2018-10-30 05:04:57,568][ceph_deploy.cli][INFO  ]  client                        : ['p2-instance-group-1-139b', 'p2-instance-group-1-6j90', 'p2-instance-group-1-jvj5']
+[2018-10-30 05:04:57,569][ceph_deploy.cli][INFO  ]  func                          : <function config at 0x7f56ee0b2848>
+[2018-10-30 05:04:57,569][ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[2018-10-30 05:04:57,569][ceph_deploy.cli][INFO  ]  default_release               : False
+[2018-10-30 05:04:57,569][ceph_deploy][ERROR ] ConfigError: Cannot load config: [Errno 2] No such file or directory: 'ceph.conf'; has `ceph-deploy new` been run in this directory?
+

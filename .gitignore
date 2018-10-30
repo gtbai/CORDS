@@ -1,3 +1,8 @@
 errfs
 *workload_dir*
 systems/*/trace*
+
+# vim temp files
+*~
+*.swp
+*.swo

@@ -3,7 +3,7 @@
 # This script just initializes a cluster of ZooKeeper nodes with just one key value pair
 # Kill all ZooKeeper instances
 pkill -f 'java.*zoo*'
-ZK_HOME=$HOME'/zookeeper-3.4.12/'
+ZK_HOME=$HOME'/zookeeper-3.4.12'
 CURR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 #Delete all the CORDS trace files
@@ -36,7 +36,7 @@ sleep 2
 # Insert key value pairs to ZooKeeper
 value=$(printf 'a%.s' {1..8192})
 echo 'create /zk_test '$value > script
-$ZK_HOME"/bin/zkCli.sh" -server 127.0.0.2:2182 < script
+$ZK_HOME"/bin/zkCli.sh" -server 127.0.0.1:2182 < script
 
 
 # Kill all ZooKeeper instances

@@ -1,0 +1,18 @@
+ID WEIGHT  TYPE NAME                         UP/DOWN REWEIGHT PRIMARY-AFFINITY 
+-1 0.02879 root default                                                        
+-2 0.00960     host p2-instance-group-1-139b                                   
+ 0 0.00960         osd.0                          up  1.00000          1.00000 
+-3 0.00960     host p2-instance-group-1-6j90                                   
+ 1 0.00960         osd.1                          up  1.00000          1.00000 
+-4 0.00960     host p2-instance-group-1-jvj5                                   
+ 2 0.00960         osd.2                          up  1.00000          1.00000 
+----------------------------------------------
+ID WEIGHT  TYPE NAME                         UP/DOWN REWEIGHT PRIMARY-AFFINITY 
+-1 0.02879 root default                                                        
+-2 0.00960     host p2-instance-group-1-139b                                   
+ 0 0.00960         osd.0                          up  1.00000          1.00000 
+-3 0.00960     host p2-instance-group-1-6j90                                   
+ 1 0.00960         osd.1                          up  1.00000          1.00000 
+-4 0.00960     host p2-instance-group-1-jvj5                                   
+ 2 0.00960         osd.2                          up  1.00000          1.00000 
+----------------------------------------------

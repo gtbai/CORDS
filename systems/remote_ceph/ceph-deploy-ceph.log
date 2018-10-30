@@ -1,0 +1,24 @@
+[2018-10-29 05:21:41,002][ceph_deploy.conf][DEBUG ] found configuration file at: /home/cephor/.cephdeploy.conf
+[2018-10-29 05:21:41,003][ceph_deploy.cli][INFO  ] Invoked (1.5.39): /usr/bin/ceph-deploy osd create node1:/var/local/osd0
+[2018-10-29 05:21:41,003][ceph_deploy.cli][INFO  ] ceph-deploy options:
+[2018-10-29 05:21:41,003][ceph_deploy.cli][INFO  ]  username                      : None
+[2018-10-29 05:21:41,003][ceph_deploy.cli][INFO  ]  block_db                      : None
+[2018-10-29 05:21:41,003][ceph_deploy.cli][INFO  ]  disk                          : [('node1', '/var/local/osd0', None)]
+[2018-10-29 05:21:41,004][ceph_deploy.cli][INFO  ]  dmcrypt                       : False
+[2018-10-29 05:21:41,004][ceph_deploy.cli][INFO  ]  verbose                       : False
+[2018-10-29 05:21:41,004][ceph_deploy.cli][INFO  ]  bluestore                     : None
+[2018-10-29 05:21:41,004][ceph_deploy.cli][INFO  ]  block_wal                     : None
+[2018-10-29 05:21:41,004][ceph_deploy.cli][INFO  ]  overwrite_conf                : False
+[2018-10-29 05:21:41,004][ceph_deploy.cli][INFO  ]  subcommand                    : create
+[2018-10-29 05:21:41,004][ceph_deploy.cli][INFO  ]  dmcrypt_key_dir               : /etc/ceph/dmcrypt-keys
+[2018-10-29 05:21:41,005][ceph_deploy.cli][INFO  ]  quiet                         : False
+[2018-10-29 05:21:41,005][ceph_deploy.cli][INFO  ]  cd_conf                       : <ceph_deploy.conf.cephdeploy.Conf instance at 0x7ff53a06b710>
+[2018-10-29 05:21:41,005][ceph_deploy.cli][INFO  ]  cluster                       : ceph
+[2018-10-29 05:21:41,005][ceph_deploy.cli][INFO  ]  fs_type                       : xfs
+[2018-10-29 05:21:41,005][ceph_deploy.cli][INFO  ]  filestore                     : None
+[2018-10-29 05:21:41,005][ceph_deploy.cli][INFO  ]  func                          : <function osd at 0x7ff53a4ce488>
+[2018-10-29 05:21:41,005][ceph_deploy.cli][INFO  ]  ceph_conf                     : None
+[2018-10-29 05:21:41,006][ceph_deploy.cli][INFO  ]  default_release               : False
+[2018-10-29 05:21:41,006][ceph_deploy.cli][INFO  ]  zap_disk                      : False
+[2018-10-29 05:21:41,006][ceph_deploy][ERROR ] ConfigError: Cannot load config: [Errno 2] No such file or directory: 'ceph.conf'; has `ceph-deploy new` been run in this directory?
+
