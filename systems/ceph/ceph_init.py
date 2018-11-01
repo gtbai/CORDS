@@ -9,7 +9,7 @@ import logging
 remote_user_name = 'cephor'
 workload_home= '/home/cephor/CORDS/systems/ceph/'
 
-hosts = ['p2-instance-group-1-139b', 'p2-instance-group-1-6j90', 'p2-instance-group-1-jvj5']
+hosts = ['p2-instance-group-2-8v1n', 'p2-instance-group-2-c851', 'p2-instance-group-2-n0g3']
 
 def invoke_cmd(cmd):
 	p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
