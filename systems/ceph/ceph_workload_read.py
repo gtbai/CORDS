@@ -39,14 +39,14 @@ def copy_file_from_remote(machine_ip, from_file_path, to_file_path):
 # The CORDS framework passes the following arguments to the workload program
 # ceph_workload_read.py trace/cords workload_dir1 workload_dir2 .. workload_dirn [log_dir]
 # For now assume only 3 nodes
-assert len(sys.argv) >= 5
+assert len(sys.argv) >= 8
 osd_data_dirs = []
 for i in range(2, 5):
     osd_data_dirs.append(sys.argv[i])
 
 log_dir = None
 #if logdir specified
-if len(sys.argv) >= 6:
+if len(sys.argv) >= 9:
 	log_dir = sys.argv[-1]
 
 # Kill all ceph osds on remote nodes
