@@ -83,3 +83,5 @@ print 'After stopping 2nd time:'
 os.system('sleep 10s')
 os.system('sudo ceph osd tree')
 
+os.system('ulimit -n 700000; sudo echo 700000 > /proc/sys/fs/file-max')
+
