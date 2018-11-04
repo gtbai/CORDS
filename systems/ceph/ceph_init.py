@@ -77,7 +77,7 @@ os.system(delete_file_cmd)
 os.system('sleep 10s')
 
 # Create a test file, write it into ceph object cluster.
-write_file_cmd = 'echo -n ' + 'a'*8192 + ' > cords_test_file.txt &&'
+write_file_cmd = 'echo -n ' + 'a' + ' > cords_test_file.txt &&'
 write_file_cmd += 'sudo ceph osd pool create cords_test_pool 100 100 &&'
 write_file_cmd += 'sudo rados put cords_test_obj cords_test_file.txt --pool=cords_test_pool'
 os.system(write_file_cmd)

@@ -109,7 +109,7 @@ if log_dir is not None:
 
 out, err = '', ''
 
-present_value = 'a' * 8192 
+present_value = 'a' 
 os.system('rm -f read_output.txt')
 
 # Issue read request on ceph osds and check its value

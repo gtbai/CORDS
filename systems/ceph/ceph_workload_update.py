@@ -111,7 +111,7 @@ out, err = '', ''
 
 # Issue update request on ceph osds
 try:
-    update_file_cmd = 'echo -n ' + 'b'*8192 + ' > update_input.txt &&'
+    update_file_cmd = 'echo -n ' + 'b' + ' > update_input.txt &&'
     update_file_cmd += 'sudo rados put -p cords_test_pool cords_test_obj update_input.txt'
     os.system(update_file_cmd)
     out = 'Successfully put.'
