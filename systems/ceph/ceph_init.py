@@ -9,7 +9,7 @@ import logging
 remote_user_name = 'cephor'
 workload_home= '/home/cephor/CORDS/systems/ceph/'
 
-hosts = ['p2-instance-group-2-8v1n', 'p2-instance-group-2-c851', 'p2-instance-group-2-n0g3']
+hosts = ['p2-instance-group-3-6d9j', 'p2-instance-group-3-h85p', 'p2-instance-group-3-pf4g']
 
 def invoke_cmd(cmd):
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -78,7 +78,7 @@ os.system('sleep 10s')
 
 # Create a test file, write it into ceph object cluster.
 write_file_cmd = 'echo -n ' + 'a' + ' > cords_test_file.txt &&'
-write_file_cmd += 'sudo ceph osd pool create cords_test_pool 100 100 &&'
+write_file_cmd += 'sudo ceph osd pool create cords_test_pool 1 1 &&'
 write_file_cmd += 'sudo rados put cords_test_obj cords_test_file.txt --pool=cords_test_pool'
 os.system(write_file_cmd)
 

@@ -9,7 +9,7 @@ import logging
 remote_user_name = 'cephor'
 cords_dir = '/home/cephor/CORDS/'
 workload_home = cords_dir + '/systems/ceph/'
-hosts = ['p2-instance-group-2-8v1n', 'p2-instance-group-2-c851', 'p2-instance-group-2-n0g3']
+hosts = ['p2-instance-group-3-6d9j', 'p2-instance-group-3-h85p', 'p2-instance-group-3-pf4g']
 CURR_DIR = os.path.dirname(os.path.realpath(__file__))
 
 ceph_cluster_dir = '/home/cephor/my-cluster'
