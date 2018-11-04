@@ -92,7 +92,7 @@ for host_idx, host in enumerate(hosts):
 # Start 3 osds in the ceph cluster.
 for host_idx, host in enumerate(hosts):
     start_cmd = 'sudo start ceph-osd id={0};'.format(host_idx)			
-    start_cmd += 'sleep 1s' 
+    start_cmd += 'sleep 1s;'
     run_remote(host, start_cmd)
 
 os.system('sleep 10s')
@@ -109,19 +109,14 @@ if log_dir is not None:
 
 out, err = '', ''
 
-present_value = 'a' * 8192 
-os.system('rm -f read_output.txt')
-
-# Issue read request on ceph osds and check its value
+# Issue update request on ceph osds
 try:
-    os.system('sudo rados get -p cords_test_pool cords_test_obj read_output.txt')
-    read_output_f = open('read_output.txt', 'r') 
-    read_output = read_output_f.read()
-    is_proper = str(read_output == present_value)
-    read_output_f.close()
-    out += 'Get succeeded, Proper: ' + is_proper + '\n'
+    update_file_cmd = 'echo -n ' + 'b'*8192 + ' > update_input.txt &&'
+    update_file_cmd += 'sudo rados put -p cords_test_pool cords_test_obj update_input.txt'
+    os.system(update_file_cmd)
+    out = 'Successfully put.'
 except Exception as e:
-    err += 'Get failed: ' + str(e)
+    err += 'Put failed: ' + str(e)
 
 print out
 print err

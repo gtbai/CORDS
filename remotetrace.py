@@ -30,14 +30,14 @@ import argparse
 remote_user_name = 'cephor'
 
 def invoke_remote_cmd(machine_ip, command):
-	cmd = 'ssh {0}@{1} \'{2}\''.format(remote_user_name, machine_ip, command)
-	p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, 	stderr=subprocess.PIPE)
-	out, err = p.communicate()
-	return (out, err)
+    cmd = 'ssh {0}@{1} \'{2}\''.format(remote_user_name, machine_ip, command)
+    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, 	stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    return (out, err)
 
 def copy_file_from_remote(machine_ip, from_file_path, to_file_path):
-	cmd = 'scp {0}@{1}:{2} {3}'.format(remote_user_name, machine_ip, from_file_path, to_file_path)
-	os.system(cmd)
+    cmd = 'scp {0}@{1}:{2} {3}'.format(remote_user_name, machine_ip, from_file_path, to_file_path)
+    os.system(cmd)
 
 ERRFS_HOME = os.path.dirname(os.path.realpath(__file__))
 fuse_command_trace = 'nohup sudo ' + ERRFS_HOME + "/errfs -f -oallow_other,modules=subdir,subdir=%s %s trace %s > /dev/null 2>&1 &"
@@ -51,10 +51,10 @@ parser.add_argument('--ignore_file', type = str, default = None)
 
 args = parser.parse_args()
 for i in range(0, len(args.trace_files)):
-	args.trace_files[i] = os.path.abspath(args.trace_files[i])
+    args.trace_files[i] = os.path.abspath(args.trace_files[i])
 
 for i in range(0, len(args.data_dirs)):
-	args.data_dirs[i] = os.path.abspath(args.data_dirs[i])
+    args.data_dirs[i] = os.path.abspath(args.data_dirs[i])
 
 trace_files = args.trace_files
 data_dirs = args.data_dirs
@@ -70,22 +70,14 @@ uppath = lambda _path, n: os.sep.join(_path.split(os.sep)[:-n])
 data_dir_snapshots = []
 data_dir_mount_points = []
 
-print "Clearing old snapshots and mount points, creating new mount points..."
+print "Clearing old mount points, creating new ones..."
 for i in range(0, machine_count):
-    data_dir_snapshots.append(os.path.join(uppath(data_dirs[i], 1), os.path.basename(os.path.normpath(data_dirs[i]))+ ".snapshot"))
     data_dir_mount_points.append(os.path.join(uppath(data_dirs[i], 1), os.path.basename(os.path.normpath(data_dirs[i]))+ ".mp"))
-    command = "sudo rm -rf " + data_dir_snapshots[i] + ";"
-    command += 'sudo fusermount -uz ' + data_dir_mount_points[i] + '; sleep 1;'
+    command = 'sudo fusermount -uz ' + data_dir_mount_points[i] + '; sleep 1;'
     command += 'sudo umount -fl ' + data_dir_mount_points[i] + '; sleep 1;'
     command += "sudo rm -rf " + data_dir_mount_points[i] + ";"
     command += "sudo mkdir " + data_dir_mount_points[i] + ";"
-   # command += 'sudo chown -R ceph:ceph {0}'.format(data_dir_mount_points[i])
-    out, err = invoke_remote_cmd(machines[i], command)
-    print "out: " + out + "err: " + err
-
-print "Snapshotting data dir..."
-for i in range(0, machine_count):
-    command =  "sudo cp -LR " + data_dirs[i] + " " + data_dir_snapshots[i] + ";"
+    # command += 'sudo chown -R ceph:ceph {0}'.format(data_dir_mount_points[i]) + ';'
     command += "sudo rm -rf " + trace_files[i]
     out, err = invoke_remote_cmd(machines[i], command)
     print "out: " + out + "err: " + err
@@ -101,10 +93,10 @@ os.system('sleep 1')
 print "Executing workload command..."
 workload_command +=  " trace " 
 for i in range(0, machine_count):
-	workload_command += data_dir_mount_points[i] + " "
+    workload_command += data_dir_mount_points[i] + " "
 
 for i in range(0, machine_count):
-	workload_command += machines[i] + " "
+    workload_command += machines[i] + " "
 
 print workload_command
 os.system(workload_command)
@@ -112,46 +104,62 @@ os.system(workload_command)
 print "Unmounting errfs..."
 i = 0
 for mp in data_dir_mount_points:
-    out, err = invoke_remote_cmd(machines[i], 'sudo fusermount -u ' + mp + '; sleep 1' + '; killall errfs >/dev/null 2>&1')
+    out, err = invoke_remote_cmd(machines[i], 'sudo fusermount -uz ' + mp + ';' + 'sudo umount -fl ' + mp +  '; sleep 1' + '; killall errfs >/dev/null 2>&1')
     print "out: " + out + "err: " + err
     i += 1
 
 to_ignore_files = []
 if ignore_file is not None:	
-	with open(ignore_file, 'r') as f:
-		for line in f:
-			line = line.strip().replace('\n','')
-			to_ignore_files.append(line)
+    with open(ignore_file, 'r') as f:
+        for line in f:
+            line = line.strip().replace('\n','')
+            to_ignore_files.append(line)
 
 def should_ignore(filename):
-	for ig in to_ignore_files:
-		if ig in filename:
-			return True
-	return False
+    for ig in to_ignore_files:
+        if ig in filename:
+            return True
+    return False
 
 i = 0
 for trace_file in trace_files:
-	os.system('scp cephor@' + machines[i] + ':' + trace_file + ' ' + trace_file)
-	i += 1
+    fetch_trace_file_cmd = 'scp cephor@' + machines[i] + ':' + trace_file + ' ' + trace_file + ';'
+    fetch_trace_file_cmd += 'sudo chown -R cephor:cephor ' + trace_file
+    os.system(fetch_trace_file_cmd)
+    i += 1
 
 for trace_file in trace_files:
-	assert os.path.exists(trace_file)
-	assert os.stat(trace_file).st_size > 0
-	if ignore_file is not None:
-		to_write_final = ''
-		with open(trace_file, 'r') as f:
-			for line in f:
-				parts = line.split('\t')
-				if parts[0] in ['rename', 'unlink', 'link', 'symlink']:
-					to_write_final += line
-				else:
-					assert len(parts) == 4
-					filename = parts[0]
-					if not should_ignore(filename):
-						to_write_final += line
+    assert os.path.exists(trace_file)
+    assert os.stat(trace_file).st_size > 0
+    if ignore_file is not None:
+        to_write_final = ''
+        with open(trace_file, 'r') as f:
+            for line in f:
+                parts = line.split('\t')
+                if parts[0] in ['rename', 'unlink', 'link', 'symlink']:
+                    to_write_final += line
+                else:
+                    assert len(parts) == 4
+                    filename = parts[0]
+                    if not should_ignore(filename):
+                        to_write_final += line
 
-		os.remove(trace_file)
-		with open(trace_file, 'w') as f:
-			f.write(to_write_final)
+        os.remove(trace_file)
+        with open(trace_file, 'w') as f:
+            f.write(to_write_final)
+
+print "Clearing old snapshots, creating new ones..."
+for i in range(0, machine_count):
+    data_dir_snapshots.append(os.path.join(uppath(data_dirs[i], 1), os.path.basename(os.path.normpath(data_dirs[i]))+ ".snapshot"))
+    command = "sudo rm -rf " + data_dir_snapshots[i] + ";"
+    out, err = invoke_remote_cmd(machines[i], command)
+    print "out: " + out + "err: " + err
+
+print "Snapshotting data dir..."
+for i in range(0, machine_count):
+    command =  "sudo cp -a " + data_dirs[i] + " " + data_dir_snapshots[i] + ";"
+    command += 'sudo chown -R ceph:ceph ' + data_dir_snapshots[i] + ';'
+    out, err = invoke_remote_cmd(machines[i], command)
+    print "out: " + out + "err: " + err
 
 print 'Tracing completed...'
